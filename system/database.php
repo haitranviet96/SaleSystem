@@ -53,7 +53,7 @@ function db_update_by_id($table, $idfield, $idvalue, $data = array() ){
     }
     
     $sql = 'UPDATE `'.$table.'` SET  '.trim($tmp_sql, ',').' WHERE '.$idfield.' = '.(int)$idvalue.'';
-    echo $sql;
+//    echo $sql;
     return mysqli_query($conn, $sql);
     
 }

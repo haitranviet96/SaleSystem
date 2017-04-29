@@ -19,7 +19,7 @@
                             </li>
                             
                             <li>
-                                <a href="admin/index.php?action=order_create">Create Order</a>
+                                <a href="admin/index.php?action=customer_list">Customers</a>
                             </li>
                             <li>
                                 <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/filter&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Filters</a>

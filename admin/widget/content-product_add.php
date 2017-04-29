@@ -17,6 +17,7 @@ if (isset($_POST['click'])) {
                 'catalog_id' => $cate_id,
                 'name' => input_post('name'),
                 'content' => input_post('content'),
+                'price' => input_post('price'),
                 'image_link' => 'http://localhost/sales/public/admin/image_upload/' . $_FILES['image']['name']
             );
             product_add($data);
@@ -26,6 +27,7 @@ if (isset($_POST['click'])) {
                 'catalog_id' => $cate_id,
                 'name' => input_post('name'),
                 'content' => input_post('content'),
+                'price' => input_post('price'),
                 'image_link' => 'http://localhost/sales/public/admin/image_upload/apple_cinema_30-100x100.jpg'
             );
         product_add($data);
