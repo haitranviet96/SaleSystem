@@ -12,6 +12,10 @@ function cate_add($data = array()){
 function cate_delete($id){
     return db_delete_by_id('catalog', 'id', $id);
 }
-//function cate_edit($data array()){
-//    return db_u
-//}
+function cate_get_row($id){
+    $sql = 'SELECT * FROM `catalog` WHERE id = '.$id.'';
+    return db_select_row($sql);
+}
+function cate_edit_by_id($idvalue,$data = array()){
+    return db_update_by_id('catalog', 'id', $idvalue, $data);
+}
