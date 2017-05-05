@@ -2,9 +2,38 @@
 load_db('product');
 $cate_id = input_get('cate_id');
 
-$product_list = product_get_list_id($cate_id);
+//$product_list = product_get_list_id($cate_id);
 // lay ten catalog 
 $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
+
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."' ";
+    $search_result = filterTable($query);
+    
+}
+ else {
+    $query = "SELECT * FROM `product` WHERE catalog_id = '".$cate_id."'";
+    $search_result = filterTable($query);
+}
+
+// function to connect and execute the query
+function filterTable($query)
+{
+    $connect = mysqli_connect("localhost", "root", "", "banhang2");
+    $filter_Result = mysqli_query($connect, $query);
+    if (!$filter_Result) {
+    printf("Error: %s\n", mysqli_error($connect));
+    exit();
+    }
+    return $filter_Result;
+}
+?>
+
+
 ?>
 
 <div id="content">
@@ -24,6 +53,7 @@ $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-list"></i><?PHP echo $cate_name['name']; ?></h3>
             </div>
+            <form action="admin/index.php?action=product_list_cate_id&cate_id=<?php echo $cate_id; ?>" method="post">
             <div class="panel-body">
                 <!--                <div class="well">
                                     <div class="row">
@@ -68,6 +98,8 @@ $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
                                         </div>
                                     </div>
                                 </div>-->
+                <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
+                    <input type="submit" name="search" value="Filter"><br><br>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -78,6 +110,8 @@ $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
                                 </td>
                                 <td class="text-right">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&amp;sort=p.price&amp;order=DESC">Price</a>
                                 </td>
+                                <td class="text-right">                    <a>Quantity</a>
+                                </td>
                                 <td class="text-center">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&amp;sort=pd.name&amp;order=DESC" class="asc">Infomation</a>
                                 </td>  
 
@@ -85,14 +119,17 @@ $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
                             </tr>
                         </thead>
                         <tbody>
-                            <?PHP foreach ($product_list as $item) { ?>
+                            <?PHP while($item = mysqli_fetch_array($search_result)): ?>
                                 <tr>
                                     <td class="text-center">                    <input type="checkbox" name="selected[]" value="42">
                                     </td>
-                                    <td class="text-center">                    <img src="<?PHP echo $item[image_link]; ?>" alt="Demo of <?PHP echo $item['name']; ?>" width="40" height="40">
+                                    <td class="text-center">                    <img src="<?PHP echo $item['image_link']; ?>" alt="Demo of <?PHP echo $item['name']; ?>" width="40" height="40">
                                     </td>
                                     <td class="text-left"> <?PHP echo $item['name']; ?></td>
                                     <td class="text-right"> <div class="text-danger"><?PHP echo $item['price']; ?> </div>
+                                    </td>
+                                    <td class="text-left">
+                                        <?PHP echo $item['qty']; ?>
                                     </td>
                                     <td class="text-left"> <div class="text-danger"><?PHP echo $item['content']; ?> </div>
 
@@ -107,7 +144,7 @@ $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
                                         </form>
                                     </td>
                                 </tr>
-                            <?PHP } ?>
+                            <?PHP endwhile; ?>
                         </tbody>
                     </table>
                 </div>
@@ -115,7 +152,7 @@ $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
                     <div class="col-sm-6 text-left"></div>
                     <div class="col-sm-6 text-right">Showing 1 to 19 of 19 (1 Pages)</div>
                 </div>
-            </div>
+            </div></form>
         </div>
     </div>
     <script type="text/javascript"><!--
