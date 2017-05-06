@@ -8,9 +8,15 @@
                         <small>Administrator</small></div>
                 </div>
                 <ul id="menu">
-                    <li id="menu-dashboard">
-                        <a href="http://localhost/opencart/upload/admin/index.php?route=common/dashboard&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V"><i class="fa fa-dashboard fw"></i> <span>Dashboard</span></a>
-                    </li>
+                    <li id="menu-sale">
+            <a class="parent"><i class="fa fa-shopping-cart fw"></i> <span>Sales</span></a>
+                  <ul>
+                <li>
+                    <a href="http://localhost/">Transactions</a>
+                            </li>
+                  </li>
+              </ul>
+          </li>
                     <li id="menu-catalog">
                         <a class="parent"><i class="fa fa-tags fw"></i> <span>Catalog</span></a>
                         <ul>
@@ -18,10 +24,10 @@
                                 <a href="admin/index.php?action=cate_list">Categories</a>
                             </li>
                             
-                            <li>
+<!--                            <li>
                                 <a href="admin/index.php?action=customer_list">Customers</a>
-                            </li>
-                            <li>
+                            </li>-->
+<!--                            <li>
                                 <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/filter&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Filters</a>
                             </li>
                             <li>
@@ -49,11 +55,15 @@
                             </li>
                             <li>
                                 <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/information&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Information</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </li>
                    
-                   
+                   <li id="menu-customer">
+            <a href="admin/index.php?action=customer_list"><i class="fa fa-user fw"></i> <span>Customers</span></a>
+                  
+          </li>
+
                    
                    
                     
@@ -64,8 +74,8 @@
                                 <a href="http://localhost/opencart/upload/admin/index.php?route=setting/store&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Settings</a>
                             </li>
                             <li>
-                                <a class="parent">Users</a>
-                                <ul>
+                                <a >Users</a>
+<!--                                <ul>
                                     <li>
                                         <a href="http://localhost/opencart/upload/admin/index.php?route=user/user&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Users</a>
                                     </li>
@@ -75,9 +85,10 @@
                                     <li>
                                         <a href="http://localhost/opencart/upload/admin/index.php?route=user/api&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">API</a>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li>
+                            
+<!--                            <li>
                                 <a class="parent">Localisation</a>
                                 <ul>
                                     <li>
@@ -126,8 +137,8 @@
                                         <a href="http://localhost/opencart/upload/admin/index.php?route=localisation/weight_class&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Weight Classes</a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li>
+                            </li>-->
+<!--                            <li>
                                 <a class="parent">Tools</a>
                                 <ul>
                                     <li>
@@ -140,10 +151,10 @@
                                         <a href="http://localhost/opencart/upload/admin/index.php?route=tool/log&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Error Logs</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>-->
                         </ul>
                     </li>
-                    <li id="menu-report">
+<!--                    <li id="menu-report">
                         <a class="parent"><i class="fa fa-bar-chart-o fw"></i> <span>Reports</span></a>
                         <ul>
                             <li>
@@ -205,7 +216,7 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
                 <div id="stats">
                     <ul>
