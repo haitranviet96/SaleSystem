@@ -24,6 +24,10 @@
                                 <a href="admin/index.php?action=cate_list">Categories</a>
                             </li>
                             
+                            <li>
+                                <a href="admin/index.php?action=product">Products</a>
+                            </li>
+                            
 <!--                            <li>
                                 <a href="admin/index.php?action=customer_list">Customers</a>
                             </li>-->
