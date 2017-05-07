@@ -8,7 +8,7 @@ if(!$action)
 {
     require SYSPATH."database.php";
     db_connect();
-    require 'action/cate_list.php';
+    require 'action/orders.php';
     db_disconnect();
 }
 

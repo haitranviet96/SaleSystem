@@ -12,7 +12,10 @@
             <a class="parent"><i class="fa fa-shopping-cart fw"></i> <span>Sales</span></a>
                   <ul>
                 <li>
-                    <a href="http://localhost/">Transactions</a>
+                    <a href="admin/index.php?action=orders">Orders</a>
+                            </li>
+                            <li>
+                    <a href="admin/index.php?action=transactions">Transactions</a>
                             </li>
                   </li>
               </ul>

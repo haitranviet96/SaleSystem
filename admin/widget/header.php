@@ -21,7 +21,7 @@
             <header id="header" class="navbar navbar-static-top">
                 <div class="navbar-header">
                     <a type="button" id="button-menu" class="pull-left"><i class="fa fa-indent fa-lg"></i></a>
-                    <a href="http://localhost/sales/admin?action=cate_list" class="navbar-brand"><img src="public/admin/image/logo.png" alt="OpenCart" title="OpenCart" /></a></div>
+                    <a href="http://localhost/sales/admin?action=cate_list" class="navbar-brand"><img src="http://localhost/sales/public/admin/image/logo1.png" alt="BK+ Mart" title="BK+ Mart" /></a></div>
                 <ul class="nav pull-right">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="label label-danger pull-left">1</span> <i class="fa fa-bell fa-lg"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right alerts-dropdown">
@@ -58,4 +58,17 @@
                     </li>
                     <li><a href="http://localhost/opencart/upload/admin/index.php?route=common/logout&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a></li>
                 </ul>
+                <style>
+        #suggest_panel p:hover {
+            color: #2aabd2;
+        }
+        #suggest_panel {
+            z-index: 1;
+            background-color: white;
+            border: 1px solid white;
+            position: absolute;
+            padding-left: 0px;
+            margin-left: 0px;
+        }
+</style>
             </header>

@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-product_list_cate_id.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/db/order.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/db/transaction.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-product.php</file>
+            <file>file:/C:/xampp/htdocs/sales/system/database.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-orders.php</file>
         </group>
     </open-files>
 </project-private>
