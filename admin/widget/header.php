@@ -56,7 +56,7 @@
                             <li><a href="http://forum.opencart.com" target="_blank">Support Forum</a></li>
                         </ul>
                     </li>
-                    <li><a href="http://localhost/opencart/upload/admin/index.php?route=common/logout&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a></li>
+                    <li><a href="admin/index.php?action=logout"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a></li>
                 </ul>
                 <style>
         #suggest_panel p:hover {

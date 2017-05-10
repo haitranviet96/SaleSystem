@@ -1,18 +1,17 @@
 <?php
 check_login_super();
-require 'db/category.php';
-$value = input_post('cate_id');
+require 'db/admin.php';
+$value = input_post('admin_id');
 
 
-if (cate_delete($value)) {
+if (admin_delete($value)) {
     echo '<script language="javascript">';
         echo'alert("Delete Successful");';
-        echo'window.location = "index.php?action=cate_list"';
+        echo'window.location = "index.php?action=list_admins"';
     echo '</script>';
 } else {
     echo '<script language="javascript">';
         echo'alert("Delete False");';
-        echo'window.location = "index.php?action=cate_list"';
+        echo'window.location = "index.php?action=list_admins"';
     echo '</script>';
 }
-
