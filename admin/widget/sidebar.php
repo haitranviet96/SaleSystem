@@ -14,17 +14,64 @@ if ($_SESSION['permission'] == 1) echo 'Admin'; ?></small></div>
             <a class="parent"><i class="fa fa-shopping-cart fw"></i> <span>Sales</span></a>
             <ul>
                 <li>
-                    <a href="http://localhost/">Transactions</a>
-                </li>
-        </li>
-    </ul>
-</li>
-<li id="menu-catalog">
-    <a class="parent"><i class="fa fa-tags fw"></i> <span>Catalog</span></a>
-    <ul>
-        <li>
-            <a href="admin/index.php?action=cate_list">Categories</a>
-        </li>
+
+                    <a href="admin/index.php?action=orders">Orders</a>
+                            </li>
+                            <li>
+                    <a href="admin/index.php?action=transactions">Transactions</a>
+                            </li>
+              </ul>
+          </li>
+                    <li id="menu-catalog">
+                        <a class="parent"><i class="fa fa-tags fw"></i> <span>Catalog</span></a>
+                        <ul>
+                            <li>
+                                <a href="admin/index.php?action=cate_list">Categories</a>
+                            </li>
+                            
+                            <li>
+                                <a href="admin/index.php?action=product">Products</a>
+                            </li>
+                            
+<!--                            <li>
+                                <a href="admin/index.php?action=customer_list">Customers</a>
+                            </li>-->
+<!--                            <li>
+                                <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/filter&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Filters</a>
+                            </li>
+                            <li>
+                                <a class="parent">Attributes</a>
+                                <ul>
+                                    <li>
+                                        <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/attribute&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Attributes</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/attribute_group&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Attribute Groups</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/option&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Options</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/manufacturer&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Manufacturers</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/download&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/review&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Reviews</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/information&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Information</a>
+                            </li>-->
+                        </ul>
+                    </li>
+                   
+                   <li id="menu-customer">
+            <a href="admin/index.php?action=customer_list"><i class="fa fa-user fw"></i> <span>Customers</span></a>
+                  
+          </li>
 
         <!--                            <li>
                                         <a href="admin/index.php?action=customer_list">Customers</a>
@@ -58,8 +105,7 @@ if ($_SESSION['permission'] == 1) echo 'Admin'; ?></small></div>
                                     <li>
                                         <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/information&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Information</a>
                                     </li>-->
-    </ul>
-</li>
+    
 
 <li id="menu-customer">
     <a href="admin/index.php?action=customer_list"><i class="fa fa-user fw"></i> <span>Customers</span></a>
