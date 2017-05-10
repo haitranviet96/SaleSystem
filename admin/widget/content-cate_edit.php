@@ -1,4 +1,6 @@
+
 <?PHP
+
 $action = input_post('cate_edit');
 require 'db/category.php';
 $id = input_get('cate_id');
