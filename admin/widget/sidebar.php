@@ -1,4 +1,3 @@
-
 <nav id="column-left">
     <div id="profile">
         <div>
@@ -107,10 +106,6 @@ if ($_SESSION['permission'] == 1) echo 'Admin'; ?></small></div>
                                     </li>-->
     
 
-<li id="menu-customer">
-    <a href="admin/index.php?action=customer_list"><i class="fa fa-user fw"></i> <span>Customers</span></a>
-
-</li>
 
 
 
