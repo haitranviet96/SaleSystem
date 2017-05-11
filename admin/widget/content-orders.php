@@ -86,17 +86,17 @@ function filterTable($query) {
                                 <legend>Add Product(s)</legend>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input-product">Product Name</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="product" id="input_product" class="form-control" placeholder="Search for product.."/>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="product" id="input_product" class="form-control" placeholder="Search for product.." onkeydown = "if (event.keyCode == 13) document.getElementById('button_search').click()"   />
                                       <!--<input type="hidden" name="product_id" value="" />-->
                                     </div>
-
-                                </div>
-                            </fieldset>
-                            <div class="text-right">
+                                    <div class="col-sm-2">
                                 <button type="button" id="button_search" class="btn btn-primary">
                                     <i class="fa fa-filter"></i> Search </button>
                             </div>
+                                </div>
+                            </fieldset>
+                            <br></br>
                             <script type="text/javascript">
                                 (function () {
                                     document.getElementById("button_search").onclick = function () {
