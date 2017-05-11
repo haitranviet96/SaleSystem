@@ -1,2 +1,2 @@
-*.nbproject
-
+#ignore netnean
+nbproject/
