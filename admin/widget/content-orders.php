@@ -379,7 +379,7 @@ function filterTable($query) {
                         }
                     }
                 };
-                xmlhttp.open("GET", "admin/db/product_sever.php?" + product, true);
+                xmlhttp.open("GET", "admin/db/product.php?" + product, true);
                 xmlhttp.send();
             
         }
