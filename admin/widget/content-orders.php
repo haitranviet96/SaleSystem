@@ -35,7 +35,7 @@ function filterTable($query) {
             </ul>
         </div>
     </div>
-    <div class="alert alert-danger" ><i class="fa fa-exclamation-circle"></i> Warning: Please check the form carefully for errors!      <button type="button" class="close" data-dismiss="alert">×</button>
+    <div class="alert alert-danger" ><i class="fa fa-exclamation-circle"></i> Warning: Please check the form carefully for errors!      <button type="button" class="close" data-dismiss="alert">Ã—</button>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
@@ -82,81 +82,87 @@ function filterTable($query) {
                             <div class="text-right">
                                 <button type="button" id="button-cart" class="btn btn-primary"  onclick="$('a[href=\'#tab-customer\']').tab('show');"><i class="fa fa-arrow-right"></i> Continue</button>
                             </div>
-                            <div class="tab-pane active" id="tab-product">
-                                <fieldset>
-                                    <legend>Add Product(s)</legend>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="input-product">Product Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="product" id="input-product" class="form-control" onkeyup="searchProduct()" placeholder="Search for product.."/>
-                                          <!--<input type="hidden" name="product_id" value="" />-->
-                                        </div>
-                                        <div class="col-sm-10"> </div>
-                                        <div class="col-sm-6" ><div id="suggest_panel"></div> </div>
+                            <fieldset>
+                                <legend>Add Product(s)</legend>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input-product">Product Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="product" id="input_product" class="form-control" placeholder="Search for product.."/>
+                                      <!--<input type="hidden" name="product_id" value="" />-->
                                     </div>
-                                </fieldset>
 
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <td class="text-center">Image</td>
-                                            <td class="text-left">                    <a class="asc">Product Name</a>
-                                            </td>
-                                            <td class="text-right">                    <a >Price</a>
-                                            </td>
-                                            <td class="text-right">                    <a >Quantity</a>
-                                            </td>
-                                            <td class="text-left">                    <a >Content</a>
-                                            </td>
-                                            <td class="text-right">Order</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="product-table">
-                                        <?php
-                                        $product_table = product_get_list();
-                                        if ($product_table == null) {
-                                            echo '<td class="text-center" colspan="6">No results!</td>';
-                                        } else {
-                                            foreach ($product_table as $item) {
-                                                ?>
-                                                <tr>
-                                                                  <!--<td class="text-center">                    <input type="checkbox" name="selected[]" value="33" />-->
-                                                    <!--</td>-->
-                                                    <td class="text-center"><img src="<?PHP echo $item['image_link']; ?>" alt="Demo of <?PHP echo $item['name']; ?>" width="40" height="40">
-                                                    </td>
-                                                    <td class="text-left"><?PHP echo $item['name']; ?></td>
-                                                    <td class="text-right"><?PHP echo $item['price']; ?></td>
-                                                    <td class="text-right"><?PHP echo $item['qty']; ?></td>
-                                                    <td class="text-left"> <div class="text-danger"><?PHP echo $item['content']; ?> </div>
-
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <!--                                        <form method="post" action="admin/index.php?action=product_delete" >
-                                                                                                    <input type="hidden" name="product_id" value="<?PHP echo $item['id']; ?>" />
-                                                                                                    <a href="admin/index.php?action=product_edit&product_id=<?PHP echo $item['id'] ?>" title="Edit" class="btn btn-primary"> <i class="fa fa-pencil"></i></a>
-                                                                                                    <a href="" onclick="$(this).parent().submit(); return false;" title="Delete" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
-                                                                                                </form>-->
-                                                        <div class="input-group btn-block" style="max-width: 100px;">
-                                                            <input type="number" min="0" max="<?PHP echo $item['qty']; ?>" id ="product_quantity[<?php echo $item['id']; ?>]" name="product[<?php echo $item['id']; ?>][quantity]" value="0" class="form-control">
-                                                            <span class="input-group-btn"><button type="button" id="button-product-add" class="btn btn-primary" onclick="addToCart(<?PHP echo $item['id']; ?>)">
-                                                                    <i class="fa fa-plus-circle"></i>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-
-                                                    </td>
-
-
-                                                </tr>
-                                                <?php
-                                            }
-                                        }
-//                              
-                                        ?>
-                                    </tbody>
-                                </table>
-
+                                </div>
+                            </fieldset>
+                            <div class="text-right">
+                                <button type="button" id="button_search" class="btn btn-primary">
+                                    <i class="fa fa-filter"></i> Search </button>
                             </div>
+                            <script type="text/javascript">
+                                (function () {
+                                    document.getElementById("button_search").onclick = function () {
+                                        search_Product(document.getElementById("input_product").value);
+                                    };
+                                })();
+                            </script>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td class="text-center">Image</td>
+                                        <td class="text-left">                    <a class="asc">Product Name</a>
+                                        </td>
+                                        <td class="text-right">                    <a >Price</a>
+                                        </td>
+                                        <td class="text-right">                    <a >Quantity</a>
+                                        </td>
+                                        <td class="text-left">                    <a >Content</a>
+                                        </td>
+                                        <td class="text-right">Order</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="product-table">
+                                    <?php
+                                    $product_table = product_get_list();
+                                    if ($product_table == null) {
+                                        echo '<td class="text-center" colspan="6">No results!</td>';
+                                    } else {
+                                        foreach ($product_table as $item) {
+                                            ?>
+                                            <tr>
+                                                              <!--<td class="text-center">                    <input type="checkbox" name="selected[]" value="33" />-->
+                                                <!--</td>-->
+                                                <td class="text-center"><img src="<?PHP echo $item['image_link']; ?>" alt="Demo of <?PHP echo $item['name']; ?>" width="40" height="40">
+                                                </td>
+                                                <td class="text-left"><?PHP echo $item['name']; ?></td>
+                                                <td class="text-right"><?PHP echo $item['price']; ?></td>
+                                                <td class="text-right"><?PHP echo $item['qty']; ?></td>
+                                                <td class="text-left"> <div class="text-danger"><?PHP echo $item['content']; ?> </div>
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <!--                                        <form method="post" action="admin/index.php?action=product_delete" >
+                                                                                                <input type="hidden" name="product_id" value="<?PHP echo $item['id']; ?>" />
+                                                                                                <a href="admin/index.php?action=product_edit&product_id=<?PHP echo $item['id'] ?>" title="Edit" class="btn btn-primary"> <i class="fa fa-pencil"></i></a>
+                                                                                                <a href="" onclick="$(this).parent().submit(); return false;" title="Delete" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                                                            </form>-->
+                                                    <div class="input-group btn-block" style="max-width: 100px;">
+                                                        <input type="number" min="0" max="<?PHP echo $item['qty']; ?>" id ="product_quantity[<?php echo $item['id']; ?>]" name="product[<?php echo $item['id']; ?>][quantity]" value="0" class="form-control">
+                                                        <span class="input-group-btn"><button type="button" id="button-product-add" class="btn btn-primary" onclick="addToCart(<?PHP echo $item['id']; ?>)">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+
+                                                </td>
+
+
+                                            </tr>
+                                            <?php
+                                        }
+                                    }
+//                              
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="tab-pane" id="tab-customer">
                             <!--                            <div class="form-group">
@@ -215,7 +221,7 @@ function filterTable($query) {
                                 <div class="col-sm-10">
                                     <input type="text" name="telephone" value="" id="input-telephone" class="form-control" />
                                 </div>
-                            </div>
+                            </div>                      
                             <!--                            <div class="form-group">
                                                             <label class="col-sm-2 control-label" for="input-fax">Fax</label>
                                                             <div class="col-sm-10">
@@ -356,38 +362,43 @@ function filterTable($query) {
         </div>
     </div>
     <script>
+        function search_Product(str) {
+            console.log(str);
 
-        function showProduct(str) {
-            $('#suggest_panel').css('visibility', 'visible');
-            if (str === "") {
-                document.getElementById("suggest_panel").innerHTML = "";
-            } else {
-                var product = "product=" + str;
+                var product = "fproduct=" + str;
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function () {
+                    console.log(this.readyState + ' ' + this.status);
                     if (this.readyState === 4 && this.status === 200) {
+                        console.log('ready');
                         var myObj = JSON.parse(this.responseText);
-                        var suggest_panel = $('#suggest_panel');
-                        suggest_panel.text('');
-                        for (i = 0; i < 5; i++) {
-                            var text = '<p><a href="#delivery" onmouseup="displayPlace(\'' +
-                                    myObj[i]['Image'] + '\',\'' +
-                                    myObj[i]['StoreName'] + '\', \'' +
-                                    myObj[i]['Address'] + '\',\'' +
-                                    myObj[i]['StoreID'] + '\')">' +
-                                    myObj[i]['StoreName'] + '</a></p>';
-                            suggest_panel.append(text);
+                        $('#product-table').text('');
+                        for (var i = 0; i < myObj.length; i++) {
+                            console.log(i);
+                            displayProduct(myObj[i]['id'], myObj[i]['image_link'], myObj[i]['name'], myObj[i]['price'], myObj[i]['qty'], myObj[i]['content']);
                         }
-                        if (myObj.length > 5) {
-                            var text = '<a href="">Show More</a>';
-                            suggest_panel.append(text);
-                        }
-
                     }
                 };
-                xmlhttp.open("GET", "serverFood.php?" + place, true);
+                xmlhttp.open("GET", "admin/db/product_sever.php?" + product, true);
                 xmlhttp.send();
-            }
+            
+        }
+        function displayProduct(id, image, productName, price, quantity, content) {
+            console.log('id = ' + id);
+            var text =
+                    '<tr><td id="' + id + '" class="text-center"><img src="' + image +
+                    '" alt="Demo of ' + productName + '" width="40" height="40"></td><td class="text-left">' +
+                    productName + '</td><td class="text-right">' + price +
+                    '</td><td class="text-right">' + quantity +
+                    '</td><td class="text-left"><div class="text-danger">' + content + '</div></td>\n\
+                    <td class="text-right">\n\
+                    <div class="input-group btn-block" style="max-width: 100px;">\n\
+                    <input type="number" min="0" max="' + quantity + '" id="product_quantity[' + id +
+                    ']" name="product[][quantity]" value="0" class="form-control">\n\
+                    <span class="input-group-btn">\n\
+                    <button type="button" id="button-product-add" class="btn btn-primary" onclick="addToCart(' + id +
+                    ')"><i class="fa fa-plus-circle"></i></button></span></div></td></tr>';
+            $('#product-table').append(text);
         }
         function searchProduct() {
             // Declare variables 
