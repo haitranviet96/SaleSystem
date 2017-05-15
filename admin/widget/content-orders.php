@@ -58,8 +58,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input-product">Product Name</label>
                                     <div class="col-sm-8">
+<<<<<<< HEAD
                                         <input type="text" id="input_product" class="form-control" placeholder="Search for product.." onkeydown = "if (event.keyCode === 13){
                                                     document.getElementById('button_search').click();}"   />
+=======
+                                        <input type="text" id="input_product" class="form-control" placeholder="Search for product.." onkeydown = "if (event.keyCode == 13)
+                                                    document.getElementById('button_search').click()"   />
+>>>>>>> master
                                       <!--<input type="hidden" name="product_id" value="" />-->
                                     </div>
                                     <div class="col-sm-2">

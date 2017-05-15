@@ -33,7 +33,7 @@
                 </li>
 
                 <li>
-                    <a href="admin/index.php?action=product">Products</a>
+                    <a href="admin/index.php?action=product">All Products</a>
                 </li>
             </ul>
         </li>
