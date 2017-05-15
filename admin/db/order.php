@@ -23,3 +23,27 @@ function order_get_row_by_transaction_id($id){
     $sql = 'SELECT * FROM `order` WHERE transaction_id = '.$id.'';
     return db_select_list($sql);
 }
+
+if (isset($_GET['aorder'])) {
+
+    ob_start();
+    require_once '../../system/database.php';
+    global $conn;
+    db_connect();
+    $order = json_decode($_GET['aoder']);
+    
+    $field = "";
+    $value = "";
+        foreach($order as $key => $var){
+        $field .= $key.',';
+        $value .= "'". mysqli_escape_string($conn, $var)."'".",";
+    }
+    $sql = 'INSERT INTO `order` ('.trim($field,',').') VALUES('. trim($value, ',').')';
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die('Cau truy van bi sai');
+    }
+    echo mysqli_insert_id($conn);
+    db_disconnect();
+    ob_end_flush();
+}

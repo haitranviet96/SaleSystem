@@ -22,12 +22,8 @@ if (isset($_GET['fproduct'])){
     require_once '../../system/database.php';
     global $conn;
     db_connect();
-        $fplace = mysqli_real_escape_string($conn, $_GET['fproduct']);
-        $product = $_GET['fproduct'];
+        $product = mysqli_real_escape_string($conn, $_GET['fproduct']);
         $query = 'SELECT * FROM product WHERE name like "%'.$product.'%"';
-//        mysqli_select_db($conn, "user");
-//        $result = mysqli_query($conn, $query);
-//        $count = mysqli_num_rows($result);
         $result = mysqli_query($conn,$query);
         $count = mysqli_num_rows($result);
         

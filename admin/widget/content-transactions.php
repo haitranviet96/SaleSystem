@@ -8,6 +8,8 @@ $transaction = transaction_get_list();
     <div class="page-header">
         <div class="container-fluid">
             <div class="pull-right">
+                <a href="admin/index.php?action=orders" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New Customer">
+                    <i class="fa fa-plus"></i></a>
                 <!--<a href="admin/index.php?action=customer_add" data-toggle="tooltip" title="Add New Customer" class="btn btn-primary"> <i class="fa fa-plus"></i></a>-->
             <a href="admin/index.php?action=transactions" data-toggle="tooltip" title="Rebuild" class="btn btn-default"><i class="fa fa-refresh"></i></a>
 <!--                <button type="buttoxn" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure?') ? $('#form-category').submit() : false;"><i class="fa fa-trash-o"></i></button>-->
