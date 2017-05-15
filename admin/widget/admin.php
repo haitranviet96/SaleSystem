@@ -15,8 +15,9 @@ if($hit_login){
         $_SESSION['account'] = $name;
         $_SESSION['password'] = $pass;
         $_SESSION['permission'] = $admin_var['permission'];
+        $_SESSION['id'] = $admin_var['id'];
         echo '<script language="javascript">';
-            echo'window.location = "index.php?action=cate_list"';
+            echo'window.location = "index.php?action=orders"';
         echo '</script>';
     }
     else{
@@ -50,7 +51,7 @@ if($hit_login){
         <div id="container">
             <header id="header" class="navbar navbar-static-top">
                 <div class="navbar-header">
-                    <a href="abc" class="navbar-brand"><img src="view/image/logo.png" alt="OpenCart" title="OpenCart" /></a></div>
+                    <a href="http://localhost/sales/admin/index.php"class="navbar-brand"><img src="http://localhost/sales/public/admin/image/logo1.png" alt="BK+ Store" title="BK+ Store" /></a></div>
             </header>
             <div id="content">
                 <div class="container-fluid"><br />

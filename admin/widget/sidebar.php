@@ -46,9 +46,6 @@
             <a class="parent"><i class="fa fa-cog fw"></i> <span>System</span></a>
             <ul>
                 <li>
-                    <a href="http://localhost/opencart/upload/admin/index.php?route=setting/store&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V">Settings</a>
-                </li>
-                <li>
                     <a >Admins</a>
                     <ul>
                         <li>
@@ -62,26 +59,5 @@
             </ul>
         </li>
     </ul>
-    <div id="stats">
-        <ul>
-            <li>
-                <div>Orders Completed <span class="pull-right">0%</span></div>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">0%</span></div>
-                </div>
-            </li>
-            <li>
-                <div>Orders Processing <span class="pull-right">0%</span></div>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">0%</span></div>
-                </div>
-            </li>
-            <li>
-                <div>Other Statuses <span class="pull-right">0%</span></div>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">0%</span></div>
-                </div>
-            </li>
-        </ul>
-    </div>
+
 </nav>
