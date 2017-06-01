@@ -1,8 +1,7 @@
 <?php
+check_login();
 require 'db/customer.php';
 $value = input_post('customer_id');
-
-
 if (customer_delete($value)) {
     echo '<script language="javascript">';
         echo'alert("Delete Successful");';

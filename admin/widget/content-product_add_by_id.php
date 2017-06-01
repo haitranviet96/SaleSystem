@@ -2,14 +2,14 @@
 $cate_id = input_get('cate_id');
 load_db('product');
 load_db('category');
-$cate_var = db_select_row("SELECT * FROM `catalog` WHERE `id` = '.$cate_id.'");
+$cate_var = cate_get_row($cate_id);
 
 if (isset($_POST['click'])) {
     if (strcmp($_FILES['image']['name'],"") != 0 ) {
         if (file_exists('../public/admin/image_upload/' . $_FILES['image']['name'])) {
             echo '<script language="javascript">';
                 echo'alert("File choosen has existed, change filename before uploading");';
-                echo'window.location = "admin/index.php?action=product_list_cate_id&cate_id='.$cate_id.'"';
+                echo'window.location = "admin/index.php?action=product_add_by_id&cate_id='.$cate_id.'"';
             echo '</script>';
         } else {
             move_uploaded_file($_FILES['image']['tmp_name'], '../public/admin/image_upload/' . $_FILES['image']['name']);
@@ -18,6 +18,7 @@ if (isset($_POST['click'])) {
                 'name' => input_post('name'),
                 'content' => input_post('content'),
                 'price' => input_post('price'),
+                'qty' => input_post('qty'),
                 'image_link' => 'http://localhost/sales/public/admin/image_upload/' . $_FILES['image']['name']
             );
             product_add($data);
@@ -31,6 +32,7 @@ if (isset($_POST['click'])) {
                 'name' => input_post('name'),
                 'content' => input_post('content'),
                 'price' => input_post('price'),
+                'qty' => input_post('qty'),
                 'image_link' => 'http://localhost/sales/public/admin/image_upload/apple_cinema_30-100x100.jpg'
             );
         product_add($data);
@@ -91,6 +93,12 @@ if (isset($_POST['click'])) {
                                     <label class="col-sm-2 control-label" for="input-meta-description1">Price</label>
                                     <div class="col-sm-10">
                                         <input name="price" rows="5" placeholder="How much does it cost?" id="input-meta-description1" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input-meta-description1">Quantity</label>
+                                    <div class="col-sm-10">
+                                        <input name="qty" rows="5" placeholder="How many?" id="input-meta-description1" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">

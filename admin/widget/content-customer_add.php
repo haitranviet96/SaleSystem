@@ -53,19 +53,19 @@ if($action == 'customer_add')
                                         <input type="text" name="name" value="" placeholder="Input name of the buyer" id="name" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label class="col-sm-2 control-label" for="input-meta-description1">Email</label>
                                     <div class="col-sm-10">
                                         <input name="email" type="email" rows="5" placeholder="Input email" id="input-meta-description1" class="form-control"/>
                                     </div>
                                 </div>
-                                 <div class="form-group">
+                                 <div class="form-group required">
                                     <label class="col-sm-2 control-label" for="input-meta-description1">Phone number</label>
                                     <div class="col-sm-10">
                                         <input type="number" name="phone" rows="5" placeholder="Input phone number" id="input-meta-description1" class="form-control"/>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label class="col-sm-2 control-label" for="input-meta-description1">Address</label>
                                     <div class="col-sm-10">
                                         <textarea name="address" rows="5" placeholder="Enter customer's address" id="input-meta-description1" class="form-control"></textarea>
@@ -94,59 +94,3 @@ if($action == 'customer_add')
     <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
     <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
     <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script> 
-    <script type="text/javascript"><!--
-$('input[name=\'path\']').autocomplete({
-                    'source': function (request, response) {
-                    $.ajax({
-                    url: 'index.php?route=catalog/category/autocomplete&token=JmSdYPZImfpo6PtZAxAwU4gJ3mvKiN3F&filter_name=' + encodeURIComponent(request),
-                            dataType: 'json',
-                            success: function (json) {
-                            json.unshift({
-                            category_id: 0,
-                                    name: ' --- None --- '
-                            });
-                            response($.map(json, function (item) {
-                            return {
-                            label: item['name'],
-                                    value: item[                                'category                        _id']
-                            }
-                            }));
-                            }
-                    });
-                    },
-                            'select': function (item) {
-                            $('input[name=\'path\']                        ').val(item['label']);
-                            $('input[name=\'parent_id\']').val(item['value']);
-                            }
-                    });
-//--></s            crip                                t> 
-                    <script type="text/javascript"><!--
-                        $('input[name=\'filter\']').autocomplete({
-                                'source': function (request, response) {
-                                $.ajax({
-                                url: 'index.php?route=catalog/filter/autocomplete&token=JmSdYPZImfpo6PtZAxAwU4gJ3mvKiN3F&filter_name=' + encodeURIComponent(request),
-                                        dataType: 'json',
-                                        success: function (json) {
-                        response($.map(json, function (item) {
-                        return {
-                                label: item['name'],
-                                                value: item['filter_id']
-                        }
-                        }));
-                            }
-                            });
-                            },
-                            'select': function (item) {
-                                                $('input[name=\'filter\']').val('');
-                                        $('#category-filter' + item['value']).remove();
-                        $('#category-filter').append('<div id="category-filter' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="category_filter[]" value="' + item['value'] + '" /></div>');
-                                            }
-                                            });
-                                    
-                        $('#category-filter').delegate('.fa-minus-circle', 'click', function () {
-                        $(this).parent().remove();
-                        });
-                                                //--></script> 
-                    <script type="text/javascript"><!--
-                                    $('#language a:first').tab('show');
-                                //--></script></div>

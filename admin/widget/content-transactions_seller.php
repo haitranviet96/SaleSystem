@@ -9,8 +9,14 @@
 load_db('transaction');
 load_db('customer');
 
-$query = 'SELECT t.*,a.name as seller_name,c.name as customer_name FROM `transaction` t JOIN `admin` a ON t.seller_id = a.id JOIN `customer` c ON t.user_id = c.id WHERE a.id='.$_SESSION['id'].'';
+if (!isset($_GET["page"])) $page = 1;  else {$page=$_GET["page"];}
+$result_per_page = 10;
+$start_page=($page-1)*$result_per_page;
+
+$query = 'SELECT t.*,a.name as seller_name,c.name as customer_name FROM `transaction` t JOIN `admin` a ON t.seller_id = a.id JOIN `customer` c ON t.user_id = c.id WHERE a.id='.$_SESSION['id'].' LIMIT '.$start_page.','.$result_per_page.'';
 $search_result = filterTable($query);
+$num_sql = 'SELECT COUNT(t.id) AS total FROM `transaction` t JOIN `admin` a ON t.seller_id = a.id JOIN `customer` c ON t.user_id = c.id WHERE a.id='.$_SESSION['id'].'';
+$total_records = filterTable($num_sql);
 function filterTable($query)
 {
     $connect = mysqli_connect("localhost", "root", "", "banhang2");
@@ -84,6 +90,24 @@ function filterTable($query)
 
                                 </tbody>
                         </table>
+                <div class="row">
+                    <div class="col-sm-6 text-left" id="pagination">
+                        <ul class="pagination">
+                            <li><span>PAGE</span></li>
+                            <?PHP 
+                        $row = $total_records->fetch_assoc();
+                        $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
+  
+                        for ($i=1; $i<=$total_pages; $i++) { ?> 
+                            <li class="active <?PHP echo $i;?>">
+                                <a href="admin/index.php?action=transactions&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
+                            </li>
+                            <?PHP } 
+                        ?>
+                        </ul>
+                    </div>
+<!--                    <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>-->
+                </div>
            </div>
         </div>
     </div>        

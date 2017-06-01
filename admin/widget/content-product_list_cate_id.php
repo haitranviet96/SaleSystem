@@ -1,7 +1,9 @@
 <?PHP
 load_db('product');
 $cate_id = input_get('cate_id');
-
+if (!isset($_GET["page"])) $page = 1;  else {$page=$_GET["page"];}
+$result_per_page = 4;
+$start_page=($page-1)*$result_per_page;
 //$product_list = product_get_list_id($cate_id);
 // lay ten catalog 
 $cate_name = db_select_row('select * from catalog where id = ' . $cate_id . '');
@@ -11,13 +13,16 @@ if(isset($_POST['search']))
     $valueToSearch = $_POST['valueToSearch'];
     // search in all table columns
     // using concat mysql function
-    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."' ";
+    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."'LIMIT ".$start_page.",".$result_per_page;
     $search_result = filterTable($query);
-    
+    $num_sql = "SELECT COUNT(id)AS total FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."";
+    $total_records = filterTable($num_sql);
 }
  else {
-    $query = "SELECT * FROM `product` WHERE catalog_id = '".$cate_id."'";
+    $query = "SELECT * FROM `product` WHERE catalog_id = '".$cate_id."' LIMIT ".$start_page.",".$result_per_page;
     $search_result = filterTable($query);
+    $num_sql = "SELECT COUNT(id) AS total FROM `product` WHERE catalog_id = '".$cate_id."'";
+    $total_records = filterTable($num_sql);
 }
 
 // function to connect and execute the query
@@ -39,11 +44,12 @@ function filterTable($query)
 <div id="content">
     <div class="page-header">
         <div class="container-fluid">
-            <div class="pull-right"><a href="admin/index.php?action=product_add&cate_id=<?PHP echo $cate_id; ?>" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New Product Into This Catalog"><i class="fa fa-plus"></i></a>
+            <div class="pull-right"><a href="admin/index.php?action=product_add_by_id&cate_id=<?PHP echo $cate_id; ?>" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New Product Into This Catalog"><i class="fa fa-plus"></i></a>
                 <a href="admin/index.php?action=cate_list" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Back"><i class="fa fa-reply"></i></a>            </div>
             <h1>Products</h1>
             <ul class="breadcrumb">
                 <li><a href="http://localhost/opencart/upload/admin/index.php?route=common/dashboard&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC">Home</a></li>
+                <li><a>Categories</a></li>
                 <li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC">Products</a></li>
             </ul>
         </div>
@@ -136,10 +142,10 @@ function filterTable($query)
                                     </td>
 
                                     <td class="text-right">
-                                        <form method="post" action="admin/index.php?action=product_delete" >
+                                        <form method="post" action="admin/index.php?action=product_delete_by_id" >
                                             <input type="hidden" name="product_id" value="<?PHP echo $item['id']; ?>" />
                                             <input type="hidden" name="catalog_id" value="<?PHP echo $item['catalog_id']; ?>" />
-                                            <a href="admin/index.php?action=cate_edit&cate_id=<?PHP echo $item['id'] ?>" title="Edit" class="btn btn-primary"> <i class="fa fa-pencil"></i></a>
+                                            <a href="admin/index.php?action=product_edit_by_id&cate_id=<?PHP echo $item['catalog_id'] ?>&product_id=<?PHP echo $item['id'] ?>" title="Edit" class="btn btn-primary"> <i class="fa fa-pencil"></i></a>
                                             <a href="" onclick="$(this).parent().submit(); return false;" title="Delete" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                         </form>
                                     </td>
@@ -149,8 +155,21 @@ function filterTable($query)
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6 text-left"></div>
-                    <div class="col-sm-6 text-right">Showing 1 to 19 of 19 (1 Pages)</div>
+                     <div class="col-sm-6 text-left" id="pagination">
+                        <ul class="pagination">
+                            <li><span>PAGE</span></li>
+                            <?PHP 
+                        $row = $total_records->fetch_assoc();
+                        $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
+  
+                        for ($i=1; $i<=$total_pages; $i++) { ?> 
+                            <li class="active <?PHP echo $i;?>">
+                                <a href="admin/index.php?action=product_list_cate_id&cate_id=<?php echo $cate_id; ?>&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
+                            </li>
+                            <?PHP } 
+                        ?>
+                        </ul>
+                    </div>
                 </div>
             </div></form>
         </div>

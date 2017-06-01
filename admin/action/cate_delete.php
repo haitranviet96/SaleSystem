@@ -1,5 +1,5 @@
 <?php
-
+check_login_super();
 require 'db/category.php';
 $value = input_post('cate_id');
 

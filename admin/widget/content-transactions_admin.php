@@ -2,7 +2,9 @@
 load_db('transaction');
 load_db('customer');
 load_db('admin');
-$transaction = transaction_get_list();
+if (!isset($_GET["page"])) $page = 1;  else {$page=$_GET["page"];}
+$result_per_page = 10;
+$start_page=($page-1)*$result_per_page;
 $query_admin = "SELECT id,name FROM admin GROUP BY id";
 $search_result = filterTable($query_admin);
 function filterTable($query)
@@ -67,8 +69,7 @@ function filterTable($query)
                         <script type="text/javascript">
                                 (function () {
                                     document.getElementById("button_search").onclick = function () {
-                                        search_Transaction(document.getElementById("input_seller").value);
-                                        console.log(document.getElementById("input_seller").value);
+                                        search_Transaction(document.getElementById('input_seller').value);
                                     };
                                 })();
                         </script>
@@ -106,7 +107,7 @@ function filterTable($query)
                     console.log(this.readyState + ' ' + this.status);
                     if (this.readyState === 4 && this.status === 200) {
                         console.log('ready');
-                       
+//                       var myObj = JSON.parse(this.responseText);
                         try{                            
                             if(!this.responseText) throw "No records found!";
                             else var myObj = JSON.parse(this.responseText);

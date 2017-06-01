@@ -5,6 +5,9 @@ $conn = null;
 function db_connect(){
     global $conn;
     $conn = mysqli_connect('localhost','root','', 'banhang2');
+    if (!$conn){
+		phpAlert("Can't connect to database server!");
+	} 
 }
 
 function db_select_list($sql){

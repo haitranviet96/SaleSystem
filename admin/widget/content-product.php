@@ -1,25 +1,25 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 load_db('product');
 //$product = product_get_list();
-
+if (!isset($_GET["page"])) $page = 1;  else {$page=$_GET["page"];}
+$result_per_page = 10;
+$start_page=($page-1)*$result_per_page;
 if(isset($_POST['search']))
 {
     $valueToSearch = $_POST['valueToSearch'];
     // search in all table columns
     // using concat mysql function
-    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%'";
+    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' LIMIT ".$start_page.",".$result_per_page;
+    $num_sql="SELECT COUNT('id') AS total FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%'";
     $search_result = filterTable($query);
+    $total_records = filterTable($num_sql);
     
 }
  else {
-    $query = "SELECT * FROM `product`";
+    $query = "SELECT * FROM `product` LIMIT ".$start_page.",".$result_per_page;
     $search_result = filterTable($query);
+    $num_sql = "SELECT COUNT(id) AS total FROM `product`";
+    $total_records = filterTable($num_sql);
 }
 
 // function to connect and execute the query
@@ -136,8 +136,22 @@ function filterTable($query)
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="">2</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;|</a></li></ul></div>
-                    <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>
+                    <div class="col-sm-6 text-left" id="pagination">
+                        <ul class="pagination">
+                            <li><span>PAGE</span></li>
+                            <?PHP 
+                        $row = $total_records->fetch_assoc();
+                        $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
+  
+                        for ($i=1; $i<=$total_pages; $i++) { ?> 
+                            <li class="active <?PHP echo $i;?>">
+                                <a href="admin/index.php?action=product&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
+                            </li>
+                            <?PHP } 
+                        ?>
+                        </ul>
+                    </div>
+<!--                    <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>-->
                 </div>
             </div></form>
         </div>
