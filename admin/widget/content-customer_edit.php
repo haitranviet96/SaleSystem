@@ -32,8 +32,8 @@ if($action == 'customer_edit')
             </div>
             <h1>Edit Customer</h1>
             <ul class="breadcrumb">
-                <li><a href="">Home</a></li>
-                <li><a href="">Customers</a></li>
+                <li><a>Home</a></li>
+                <li><a>Customers</a></li>
             </ul>
         </div>
     </div>
