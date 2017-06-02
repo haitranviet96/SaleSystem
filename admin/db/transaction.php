@@ -42,3 +42,26 @@ if (isset($_GET['fseller_id'])){
         db_disconnect();
         ob_end_flush();
     }
+    
+    if (isset($_GET['tadd'])) {
+    ob_start();
+    require_once '../../system/database.php';
+    global $conn;
+    db_connect();
+    $transaction = json_decode($_GET['tadd']);
+    
+    $field = "";
+    $value = "";
+        foreach($transaction as $key => $var){
+        $field .= $key.',';
+        $value .= "'". mysqli_escape_string($conn, $var)."'".",";
+    }
+    $sql = 'INSERT INTO `transaction` ('.trim($field,',').') VALUES('. trim($value, ',').')';
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die('Cau truy van bi sai');
+    }
+    echo mysqli_insert_id($conn);
+    db_disconnect();
+    ob_end_flush();
+}
