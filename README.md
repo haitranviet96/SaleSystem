@@ -1,3 +1,10 @@
+# SUBMISSON
+- Database SQL is file banhang2.sql
+- Report file is Salessystem.pdf
+- Put whole of this folder into a new folder name "sales" in folder "htdocs" of XAMPP application
+- Create a database in XAMPP name "banhang2" and import file "banhang2.sql" into it
+- Run the link "localhost/sales/admin/index.php" to see the magic
+
 # SaleSystem
 
 This is the sales system.

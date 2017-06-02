@@ -488,7 +488,7 @@
                 productName + '</td><td id="price' + id + '" class="text-right">$' + price +
                 '</td><td class="text-right">' + quantity +
                 '</td><td class="text-left"><div class="text-danger">' + content + '</div></td>\n\
-                <td class="text-right">\n\
+                <td width="125" class="text-right">\n\
                 <div class="input-group btn-block" style="max-width: 100px;">\n\
                 <input type="number" min="0" max="' + quantity + '" id="product_quantity[' + id +
                 ']" name="product[][quantity]" value="0" class="form-control">\n\
