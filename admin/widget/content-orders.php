@@ -58,10 +58,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input-product">Product Name</label>
                                     <div class="col-sm-8">
- 
                                         <input type="text" id="input_product" class="form-control" placeholder="Search for product.." onkeydown = "if (event.keyCode === 13){
                                                     document.getElementById('button_search').click();}"   />
-
                                       <!--<input type="hidden" name="product_id" value="" />-->
                                     </div>
                                     <div class="col-sm-2">
@@ -282,7 +280,8 @@
             } else {
                 customer_mod('ecustomer');
             }
-            id = add_transaction();
+            var id = add_transaction();
+            console.log("id:" + id);
             for (var i = 0; i < cart.length; i++) {
                 add_order(id, cart[i].id, cart[i].quantity);
             }
@@ -316,6 +315,7 @@
             message: document.getElementById('input-comment').value,
             created: document.getElementById('date').innerHTML
         };
+        var id;
         var action = "tadd=" + JSON.stringify(transaction);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
@@ -325,12 +325,15 @@
                 if (this.responseText === '') {
                     return;
                 } else {
-                    return this.responseText;
+                    console.log("check respond:" + this.responseText);
+                    id = this.responseText;
+                    return;
                 }
             }
         };
-        xmlhttp.open("GET", "admin/db/transaction.php?" + action, true);
+        xmlhttp.open("GET", "admin/db/transaction.php?" + action, false);
         xmlhttp.send();
+        return id;
     }
     function add_order(transaction_id, product_id, quantity) {
         var order = {

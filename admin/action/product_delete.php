@@ -1,5 +1,5 @@
 <?php
-
+check_login_super();
 require 'db/product.php';
 $value = input_post('product_id');
 $catalog_id= input_post('catalog_id');

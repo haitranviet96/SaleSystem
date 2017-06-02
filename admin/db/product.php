@@ -26,6 +26,7 @@ function product_get_row($id){
 function product_edit_by_id($idvalue, $data = array()) {
     return db_update_by_id('product', 'id', $idvalue, $data);
 }
+        
 if (isset($_GET['fproduct'])){
     ob_start();
     require_once '../../system/database.php';

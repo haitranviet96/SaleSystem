@@ -53,7 +53,7 @@ function filterTable($query)
             <div class="panel-body">
                 <table class="table table-bordered table-hover">
                                 <thead>
-                                    <tr>
+                                    <tr >
                                         <td class="text-center">ID</td>
                                         <td class="text-center">                    <a >Seller ID</a>
                                         </td>
@@ -78,7 +78,7 @@ function filterTable($query)
                                     else {
                                         while($item = mysqli_fetch_array($search_result)):
                                     ?>
-                                    <tr>
+                                    <tr onclick="document.location = 'admin/index.php?action=transaction_info&transaction_id=<?PHP echo $item['id'];?>';">
                                         <td class="text-center"><?PHP echo $item['id']; ?> </td>
                                         <td class="text-center"><?PHP echo $item['seller_id']; ?> </td>
                                         <td class="text-center"><?PHP echo $item['customer_name']; ?> </td>
