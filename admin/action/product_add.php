@@ -1,5 +1,5 @@
 <?PHP
-
+check_login_super();
 load_header();
 load_sidebar();
 

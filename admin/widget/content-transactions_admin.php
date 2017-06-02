@@ -129,7 +129,7 @@ function filterTable($query)
         function displayTrans(id, seller_id, customer_name, amount, message, created) {
             console.log('id = ' + id);
             var text =
-                    '<tr><td id="' + id + '" class="text-center">'+ id + '</td><td class="text-center">' +
+                    '<tr onclick="document.location=\'admin/index.php?action=transaction_info&transaction_id='+id+'\'"><td id="' + id + '" class="text-center">'+ id + '</td><td class="text-center">' +
                     seller_id + '</td><td class="text-center">' + customer_name +
                     '</td><td class="text-center">' + amount +
                     '</td><td class="text-center">' + message+ 

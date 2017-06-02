@@ -1,4 +1,5 @@
 <?php
+
 load_db('product');
 //$product = product_get_list();
 if (!isset($_GET["page"])) $page = 1;  else {$page=$_GET["page"];}
