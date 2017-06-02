@@ -1,50 +1,20 @@
 <?PHP
-require 'db/product.php';
+$cate_id = input_get('cate_id');
+load_db('product');
 load_db('category');
-
-$query="SELECT * FROM `catalog`";
-$search_result = filterTable($query);
-//if (isset($_POST['click'])) {
-//    if (strcmp($_FILES['image']['name'],"") != 0 ) {
-//        
-//            move_uploaded_file($_FILES['image']['tmp_name'], '../public/admin/image_upload/' . $_FILES['image']['name']);
-//            $data = array(
-//                'catalog_id' => input_post('cate'),
-//                'name' => input_post('name'),
-//                'content' => input_post('content'),
-//                'price' => input_post('price'),
-//                'qty' => input_post('qty'),
-//                'image_link' => 'http://localhost/sales/public/admin/image_upload/' . $_FILES['image']['name']
-//            );
-//            product_add($data);
-//            echo '<script language="javascript">';
-//                echo'window.location = "admin/index.php?action=product"';
-//            echo '</script>';
-//        
-//    } else {
-//        $data = array(
-//                'catalog_id' => input_post('cate'),
-//                'name' => input_post('name'),
-//                'content' => input_post('content'),
-//                'price' => input_post('price'),
-//                'qty' => input_post('qty'),
-//                'image_link' => 'http://localhost/sales/public/admin/image_upload/apple_cinema_30-100x100.jpg'
-//            );
-//        product_add($data);
-//        echo '<script language="javascript">';
-//                echo'alert("Product added without Image");';
-//                echo'window.location = "admin/index.php?action=product"';
-//        echo '</script>';
-//        
-//    }
-//}
+$cate_var = cate_get_row($cate_id);
 
 if (isset($_POST['click'])) {
     if (strcmp($_FILES['image']['name'],"") != 0 ) {
-       
+        if (file_exists('../public/admin/image_upload/' . $_FILES['image']['name'])) {
+            echo '<script language="javascript">';
+                echo'alert("File choosen has existed, change filename before uploading");';
+                echo'window.location = "admin/index.php?action=product_add_by_id&cate_id='.$cate_id.'"';
+            echo '</script>';
+        } else {
             move_uploaded_file($_FILES['image']['tmp_name'], '../public/admin/image_upload/' . $_FILES['image']['name']);
             $data = array(
-                'catalog_id' => input_post('cate'),
+                'catalog_id' => $cate_id,
                 'name' => input_post('name'),
                 'content' => input_post('content'),
                 'price' => input_post('price'),
@@ -53,12 +23,12 @@ if (isset($_POST['click'])) {
             );
             product_add($data);
             echo '<script language="javascript">';
-                 echo'window.location = "admin/index.php?action=product"';
+                 echo'window.location = "admin/index.php?action=product_list_cate_id&cate_id='.$cate_id.'"';
             echo '</script>';
-        
+        }
     } else {
         $data = array(
-                'catalog_id' => input_post('cate'),
+                'catalog_id' => $cate_id,
                 'name' => input_post('name'),
                 'content' => input_post('content'),
                 'price' => input_post('price'),
@@ -68,24 +38,12 @@ if (isset($_POST['click'])) {
         product_add($data);
         echo '<script language="javascript">';
                 echo'alert("Product added without Image");';
-                echo'window.location = "admin/index.php?action=product"';
+                echo'window.location = "admin/index.php?action=product_list_cate_id&cate_id='.$cate_id.'"';
         echo '</script>';
         
     }
 }
-
-function filterTable($query)
-{
-    $connect = mysqli_connect("localhost", "root", "", "banhang2");
-    $filter_Result = mysqli_query($connect, $query);
-    if (!$filter_Result) {
-    printf("Error: %s\n", mysqli_error($connect));
-    exit();
-    }
-    return $filter_Result;
-}
 ?>
-
 
 
 
@@ -95,18 +53,18 @@ function filterTable($query)
         <div class="container-fluid">
             <div class="pull-right">
                 <button onclick="$(this).(form - category).submit();" type="submit" form="form-category" data-toggle="tooltip" title="Save" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                <a href="http://localhost/sales/admin/index.php?action=product" data-toggle="tooltip" title="Cancel" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
-            <h1>All products</h1>
+                <a href="http://localhost/sales/admin/index.php?action=cate_list" data-toggle="tooltip" title="Cancel" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>Products</h1>
             <ul class="breadcrumb">
                 <li><a href="">Home</a></li>
-                <li><a href="">All products</a></li>
+                <li><a href="">Products</a></li>
             </ul>
         </div>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-pencil"></i> Add new product</h3>
+                <h3 class="panel-title"><i class="fa fa-pencil"></i> Add new product to <?PHP echo $cate_var['name']; ?></h3>
             </div>
             <div class="panel-body">
                 <form action="" method="post" enctype="multipart/form-data" id="form-category" class="form-horizontal">
@@ -125,16 +83,12 @@ function filterTable($query)
                                         <input type="text" name="name" value="" placeholder="Input name of the product" id="name" class="form-control" />
                                     </div>
                                 </div>
-                                  <div class="form-group">
+<!--                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input-meta-description1">Category</label>
                                     <div class="col-sm-10">
-                                        <select name="cate" class = "form-control">
-                                            <?PHP while($item = mysqli_fetch_array($search_result)): ?>
-                                            <option value="<?PHP echo $item['id'] ?>"> <?PHP echo $item['name'] ?></option>
-                                            <?PHP endwhile;?>         
-                                        </select>
+                                        <select></select>
                                     </div>
-                                  </div>
+                                </div>-->
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input-meta-description1">Price</label>
                                     <div class="col-sm-10">

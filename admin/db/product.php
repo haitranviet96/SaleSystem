@@ -17,6 +17,16 @@ function product_add($data = array()) {
 function product_delete($id) {
     return db_delete_by_id('product', 'id', $id);
 }
+
+function product_get_row($id){
+    $sql = 'SELECT * FROM `product` WHERE id = '.$id.'';
+    return db_select_row($sql);
+}
+
+function product_edit_by_id($idvalue, $data = array()) {
+    return db_update_by_id('product', 'id', $idvalue, $data);
+}
+        
 if (isset($_GET['fproduct'])){
     ob_start();
     require_once '../../system/database.php';

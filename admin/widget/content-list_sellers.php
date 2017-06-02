@@ -1,6 +1,22 @@
 <?php
 load_db('admin');
-$admin = admin_get_list();
+if (!isset($_GET["page"])) $page = 1;  else {$page=$_GET["page"];}
+$result_per_page = 10;
+$start_page=($page-1)*$result_per_page;
+$sql = "SELECT * FROM `admin` LIMIT ".$start_page.",".$result_per_page;
+$num_sql = "SELECT COUNT(id) AS total FROM `admin` ";
+$admin = filterTable($sql);
+$total_records = filterTable($num_sql);
+function filterTable($query)
+{
+    $connect = mysqli_connect("localhost", "root", "", "banhang2");
+    $filter_Result = mysqli_query($connect, $query);
+    if (!$filter_Result) {
+    printf("Error: %s\n", mysqli_error($connect));
+    exit();
+    }
+    return $filter_Result;
+}
 ?>
 
 <div id="content">
@@ -67,8 +83,21 @@ $admin = admin_get_list();
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="">2</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;|</a></li></ul></div>
-                    <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>
+                     <div class="col-sm-6 text-left">
+                        <ul class="pagination">
+                            <li><span>PAGE</span></li>
+                            <?PHP 
+                        $row = $total_records->fetch_assoc();
+                        $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
+  
+                        for ($i=1; $i<=$total_pages; $i++) { ?> 
+                            <li class="active <?PHP echo $i;?>">
+                                <a href="admin/index.php?action=seller_list&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
+                            </li>
+                            <?PHP } 
+                        ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
