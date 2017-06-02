@@ -46,11 +46,11 @@ function filterTable($query)
                         <thead>
                             <tr>
                                 <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
-                                <td class="text-left">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;sort=name&amp;order=DESC" class="asc">Category Name</a>
+                                <td class="text-left">                    <a>Category Name</a>
                                 </td>
-                                <td class="text-left">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;sort=sort_order&amp;order=DESC">ID nhóm</a>
+                                <td class="text-left">                    <a>Category ID</a>
                                 </td>
-                                <td class="text-right">Tùy chọn</td>
+                                <td class="text-right">Option</td>
 
                             </tr>
                         </thead>

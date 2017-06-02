@@ -112,13 +112,13 @@ function filterTable($query)
                             <tr>
                                 <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
                                 <td class="text-center">Image</td>
-                                <td class="text-left">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&amp;sort=p.status&amp;order=DESC">Product Name</a>
+                                <td class="text-left">                    <a>Product Name</a>
                                 </td>
-                                <td class="text-right">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&amp;sort=p.price&amp;order=DESC">Price</a>
+                                <td class="text-right">                    <a>Price</a>
                                 </td>
                                 <td class="text-right">                    <a>Quantity</a>
                                 </td>
-                                <td class="text-center">                    <a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&amp;sort=pd.name&amp;order=DESC" class="asc">Infomation</a>
+                                <td class="text-center">                    <a>Information</a>
                                 </td>  
 
                                 <td class="text-right">Action</td>
@@ -175,79 +175,4 @@ function filterTable($query)
             </div></form>
         </div>
     </div>
-    <script type="text/javascript"><!--
-        $('#button-filter').on('click', function() {
-        var url = 'index.php?route=catalog/product&token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC';
-        var filter_name = $('input[name=\'filter_name\']').val();
-        if (filter_name) {
-        url += '&filter_name=' + encodeURIComponent(filter_nam        e);
-        }
-
-        var filter_model = $('input[name=\'filter_mo        del\']').val();
-        if (filter_model) {
-        url += '&filter_model=' + encodeURICompo      nent(filter_mod        el);
-        }
-
-        var filter_price = $('input[        name=\'filter_price\']').val();
-        if (filter_price) {
-        url += '&filter_price=' + encode        URIComponent(fi        lter_pr        ice);
-        }
-
-        var filter_quantity = $('i        nput[name=\'filter_quant        ity\']').val();
-        if (filter_quantity) {
-        url += '&filter_quantity=' + e        ncodeURIComp  onen        t(filter_quantity);
-        }
-
-        var fil        ter_status = $('sel        ect[name=\'filter_status\']').val();
-        if (filter_status != '*') {
-        ur        l += '&filter_s        tatus=' + encodeURIComponent(filter_status);
-        }
-
-        var filter_image = $('select[name=\'filter_image\']').val();
-        if (filter_image != '*') {
-        url += '&        filt                 er_ima        ge=' + encodeURIComponent(f         ilt              er_im        age);
-        }
-
-        location = url;
-        });
-        //--></scri            pt>
-            <script type="text/javascript"><!--
-                                            $('input[name=\'filter_name\']').autocomplete({
-                        'source': function(request, response) {
-                        $.ajax({
-                        url: 'index.php?route=catalog/product/autocomplete&token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&filter_name=' + encodeURIComponent(request),
-                                dataType: 'json',
-                                success: function(json) {
-                                response($.map(json, function(item) {
-                                return {
-                                label: item['name'],
-                                        value: item['product_id']
-                                                }
-                }));
-                }
-                });
-                },
-                        'select': function(item) {
-                                        $('input[name=\'filter_name\']').val(item['label']);
-                }
-                });
-                                                $('input[name=\'filter_model\']').autocomplete({
-                                        'source': function(request, response) {
-                                        $.ajax({
-                                        url: 'index.php?route=catalog/product/autocomplete&token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC&filter_model=' + encodeURIComponent(request),
-                                                dataType: 'json',
-                                                success: function(json) {
-                                                response($.map(json, function(item) {
-                                                return {
-                                                label: item['model'],
-                value: item['product_id']
-                }
-                }));
-                }
-                        });
-                                                    },
-                                                    'select': function(item) {
-                $('input[name=\'filter_model\']').val(item['label']);
-                }
-                                            });
-                                            //--></script></div>
+</div>

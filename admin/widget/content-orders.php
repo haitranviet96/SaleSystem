@@ -80,7 +80,7 @@
                                 <thead>
                                     <tr>
                                         <td class="text-center">Image</td>
-                                        <td class="text-left">                    <a class="asc">Product Name</a>
+                                        <td class="text-left">                    <a >Product Name</a>
                                         </td>
                                         <td class="text-right">                    <a >Price</a>
                                         </td>
