@@ -13,13 +13,13 @@ if(isset($_POST['search']))
     $valueToSearch = $_POST['valueToSearch'];
     // search in all table columns
     // using concat mysql function
-    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."'LIMIT ".$start_page.",".$result_per_page;
+    $query = "SELECT * FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."'LIMIT ".$start_page.",".$result_per_page."";
     $search_result = filterTable($query);
-    $num_sql = "SELECT COUNT(id)AS total FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."";
+    $num_sql = "SELECT COUNT(id)AS total FROM `product` WHERE CONCAT(`id`, `name`, `price`, `qty`) LIKE '%".$valueToSearch."%' AND catalog_id = '".$cate_id."'";
     $total_records = filterTable($num_sql);
 }
  else {
-    $query = "SELECT * FROM `product` WHERE catalog_id = '".$cate_id."' LIMIT ".$start_page.",".$result_per_page;
+    $query = "SELECT * FROM `product` WHERE catalog_id = '".$cate_id."' LIMIT ".$start_page.",".$result_per_page."";
     $search_result = filterTable($query);
     $num_sql = "SELECT COUNT(id) AS total FROM `product` WHERE catalog_id = '".$cate_id."'";
     $total_records = filterTable($num_sql);
@@ -48,9 +48,9 @@ function filterTable($query)
                 <a href="admin/index.php?action=cate_list" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Back"><i class="fa fa-reply"></i></a>            </div>
             <h1>Products</h1>
             <ul class="breadcrumb">
-                <li><a href="http://localhost/opencart/upload/admin/index.php?route=common/dashboard&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC">Home</a></li>
+                <li><a >Home</a></li>
                 <li><a>Categories</a></li>
-                <li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/product&amp;token=xAwoFDIcAvsCOiIf6RJLY0xlvKb7hXpC">Products</a></li>
+                <li><a>Products</a></li>
             </ul>
         </div>
     </div>
@@ -105,7 +105,7 @@ function filterTable($query)
                                     </div>
                                 </div>-->
                 <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
-                    <input type="submit" name="search" value="Filter"><br><br>
+                    <input type="submit" name="search" value="Search"><br><br>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -154,8 +154,9 @@ function filterTable($query)
                         </tbody>
                     </table>
                 </div>
-                <div class="row">
-                     <div class="col-sm-6 text-left" id="pagination">
+               <div class="row">
+<!--                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="">2</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;|</a></li></ul></div>-->
+                    <div class="col-sm-6 text-left">
                         <ul class="pagination">
                             <li><span>PAGE</span></li>
                             <?PHP 
@@ -163,7 +164,7 @@ function filterTable($query)
                         $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
   
                         for ($i=1; $i<=$total_pages; $i++) { ?> 
-                            <li class="active <?PHP echo $i;?>">
+                            <li class="<?PHP if($i == $page) echo "active";?>">
                                 <a href="admin/index.php?action=product_list_cate_id&cate_id=<?php echo $cate_id; ?>&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
                             </li>
                             <?PHP } 

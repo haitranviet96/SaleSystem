@@ -39,9 +39,9 @@ function filterTable($query)
             </div>
             <h1>Transactions</h1>
             <ul class="breadcrumb">
-                <li><a href="admin/index.php">Home</a></li>
-                <li><a href="admin/index.php">Sales</a></li>
-                <li><a href="admin/index.php?action=transactions">Transactions</a></li>
+                <li><a >Home</a></li>
+                <li><a >Sales</a></li>
+                <li><a >Transactions</a></li>
             </ul>
         </div>
     </div>
@@ -90,8 +90,9 @@ function filterTable($query)
 
                                 </tbody>
                         </table>
-                <div class="row">
-                    <div class="col-sm-6 text-left" id="pagination">
+               <div class="row">
+<!--                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="">2</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;|</a></li></ul></div>-->
+                    <div class="col-sm-6 text-left">
                         <ul class="pagination">
                             <li><span>PAGE</span></li>
                             <?PHP 
@@ -99,14 +100,13 @@ function filterTable($query)
                         $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
   
                         for ($i=1; $i<=$total_pages; $i++) { ?> 
-                            <li class="active <?PHP echo $i;?>">
+                            <li class="<?PHP if($i == $page) echo "active";?>">
                                 <a href="admin/index.php?action=transactions&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
                             </li>
                             <?PHP } 
                         ?>
                         </ul>
                     </div>
-<!--                    <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>-->
                 </div>
            </div>
         </div>

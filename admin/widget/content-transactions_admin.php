@@ -34,9 +34,9 @@ function filterTable($query)
             </div>
             <h1>Transactions</h1>
             <ul class="breadcrumb">
-                <li><a href="admin/index.php">Home</a></li>
-                <li><a href="admin/index.php">Sales</a></li>
-                <li><a href="admin/index.php?action=transactions">Transactions</a></li>
+                <li><a >Home</a></li>
+                <li><a >Sales</a></li>
+                <li><a >Transactions</a></li>
             </ul>
         </div>
     </div>
