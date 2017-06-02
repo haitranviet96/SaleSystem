@@ -14,6 +14,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-cate_list.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-transactions_seller.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/action/transactions.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/db/transaction.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-product.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-transactions_admin.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-customer_list.php</file>
