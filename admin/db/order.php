@@ -30,7 +30,7 @@ if (isset($_GET['aorder'])) {
     require_once '../../system/database.php';
     global $conn;
     db_connect();
-    $order = json_decode($_GET['aoder']);
+    $order = json_decode($_GET['aorder']);
     
     $field = "";
     $value = "";
@@ -39,6 +39,7 @@ if (isset($_GET['aorder'])) {
         $value .= "'". mysqli_escape_string($conn, $var)."'".",";
     }
     $sql = 'INSERT INTO `order` ('.trim($field,',').') VALUES('. trim($value, ',').')';
+    echo $sql;
     $result = mysqli_query($conn, $sql);
     if (!$result) {
         die('Cau truy van bi sai');

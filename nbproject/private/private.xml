@@ -13,16 +13,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/sidebar.php</file>
-            <file>file:/C:/xampp/htdocs/sales/admin/db/order.php</file>
+            <file>file:/C:/xampp/htdocs/sales/.gitignore</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-customer_add.php</file>
-            <file>file:/C:/xampp/htdocs/sales/admin/db/transaction.php</file>
-            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-cate_add.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/db/customer.php</file>
-            <file>file:/C:/xampp/htdocs/sales/admin/action/orders.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/action/customer_edit.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-product.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-customer_list.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/db/product.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-list_sellers.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/db/order.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-order_create.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/action/customer_delete.php</file>
+            <file>file:/C:/xampp/htdocs/sales/index.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/db/transaction.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/action/transactions.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/widget/content-cate_add.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/action/orders.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-list_admins.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-orders.php</file>
+            <file>file:/C:/xampp/htdocs/sales/admin/action/seller_list.php</file>
             <file>file:/C:/xampp/htdocs/sales/admin/widget/content-customer_edit.php</file>
         </group>
     </open-files>
