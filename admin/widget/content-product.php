@@ -45,8 +45,8 @@ function filterTable($query)
             </div>
             <h1>Products</h1>
             <ul class="breadcrumb">
-                <li><a href="">Home</a></li>
-                <li><a href="">Product</a></li>
+                <li><a >Home</a></li>
+                <li><a >Product</a></li>
             </ul>
         </div> 
     </div>
@@ -84,7 +84,7 @@ function filterTable($query)
                     </div>
                 </div>-->
                  <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
-                    <input type="submit" name="search" value="Filter"><br><br>
+                    <input type="submit" name="search" value="Search"><br><br>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="shitty_table">
                         <thead>
@@ -136,7 +136,8 @@ function filterTable($query)
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6 text-left" id="pagination">
+<!--                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="">2</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;|</a></li></ul></div>-->
+                    <div class="col-sm-6 text-left">
                         <ul class="pagination">
                             <li><span>PAGE</span></li>
                             <?PHP 
@@ -144,16 +145,16 @@ function filterTable($query)
                         $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
   
                         for ($i=1; $i<=$total_pages; $i++) { ?> 
-                            <li class="active <?PHP echo $i;?>">
+                            <li class="<?PHP if($i == $page) echo "active";?>">
                                 <a href="admin/index.php?action=product&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
                             </li>
                             <?PHP } 
                         ?>
                         </ul>
                     </div>
-<!--                    <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>-->
                 </div>
             </div></form>
         </div>
     </div>
 </div>
+

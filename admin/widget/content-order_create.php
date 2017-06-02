@@ -29,8 +29,8 @@ if($action == 'order_create')
                 <a href="http://localhost/sales/admin/index.php?action=cate_list" data-toggle="tooltip" title="Cancel" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
             <h1>Create An Order</h1>
             <ul class="breadcrumb">
-                <li><a href="">Home</a></li>
-                <li><a href="">Categories</a></li>
+                <li><a >Home</a></li>
+                <li><a >Categories</a></li>
             </ul>
         </div>
     </div>

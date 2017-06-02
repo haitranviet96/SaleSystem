@@ -83,7 +83,8 @@ function filterTable($query)
                     </table>
                 </div>
                 <div class="row">
-                   <div class="col-sm-6 text-left">
+<!--                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="">2</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;</a></li><li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=hPtHjo2YGjzmxeBLD68JxRHTz3tDIu3V&amp;page=2">&gt;|</a></li></ul></div>-->
+                    <div class="col-sm-6 text-left">
                         <ul class="pagination">
                             <li><span>PAGE</span></li>
                             <?PHP 
@@ -91,8 +92,8 @@ function filterTable($query)
                         $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
   
                         for ($i=1; $i<=$total_pages; $i++) { ?> 
-                            <li class="active <?PHP echo $i;?>">
-                                <a href="admin/index.php?action=seller_list&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
+                            <li class="<?PHP if($i == $page) echo "active";?>">
+                                <a href="admin/index.php?action=list_admins&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
                             </li>
                             <?PHP } 
                         ?>

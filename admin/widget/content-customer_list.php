@@ -30,8 +30,8 @@ function filterTable($query)
             </div>
             <h1>Customers</h1>
             <ul class="breadcrumb">
-                <li><a href="">Home</a></li>
-                <li><a href="">Customers</a></li>
+                <li><a >Home</a></li>
+                <li><a >Customers</a></li>
             </ul>
         </div>
     </div>
@@ -98,7 +98,7 @@ function filterTable($query)
                         $total_pages = ceil($row["total"] / $result_per_page); // calculate total pages with results
   
                         for ($i=1; $i<=$total_pages; $i++) { ?> 
-                            <li class="active <?PHP echo $i;?>">
+                            <li class="<?PHP if($i == $page) echo "active";?>">
                                 <a href="admin/index.php?action=customer_list&page=<?PHP echo $i;?>"><?PHP echo $i; ?></a>
                             </li>
                             <?PHP } 
